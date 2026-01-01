@@ -18,7 +18,7 @@ def upgrade(element_id):
         try:
             driver.find_element(By.ID, element_id).click()
             break
-        except exceptions.StaleElementReferenceException, exceptions.NoSuchElementException:
+        except (exceptions.StaleElementReferenceException, exceptions.NoSuchElementException):
             pass
 
 when_exists(By.ID, "langSelect-EN").click()
@@ -63,7 +63,7 @@ upgrade("upgrade0")
 for _ in range(255): # Carpal tunnel prevention cream
     action = action.pause(click_delay).click()
 action.perform()
-upgrade("upgrade1")
+upgrade("upgrade0")
 section_time = time.time() - start_section_time
 for _ in range(int(375 / section_time * (60 - section_time))):
     action = action.pause(click_delay).click()
